@@ -10,13 +10,94 @@
 		* { padding: 0; margin: 0; }
 		body { font-family: sans-serif; font-size: 100%; margin: 10px; color: #222; background-color: #eee; }
 		#animate { position: absolute; top: 80px; left: 100px; width: 180px; height: 120px; font-size: 2em; text-align: center; line-height: 118px; color: #fff; background-color: #00c; border: 2px solid #006; border-radius: 5px; }
+		.add{
+			border: 2px solid red;
+			background-color: gray;
+			padding: 0.5px 25px;
+		}
+		li{
+			line-height: 25px;
+			color: white;
+			background-color: gray;
+			padding: 5px;
+			border-bottom: 1px solid white;
+			width: 400px;
+		}
 	</style>
 </head>
 <body>
+	<h1> exercise One : </h1>
 
-	<h1>jQuery Animation</h1>
+	<h2>jQuery Animation</h2>
 
-	<div id="animate">ANIMATE</div>
+	<div id="animate">ANIMATE</div><br><br><br><br><br><br><br><br><br><br><br><br><hr>
+	<h1>exercise two</h1>
+	<input type="text" id="myInput" name="add" placeholder="add tasks TODO..">
+	<span id="btn" onclick="newTODO()" class="add">Add</span>
+	<ul id="myUL">
+		<li>go to the course</li>
+		<li>go shopping</li>
+		<li>tommorow is Christi Himmelfahrt</li>
+		<li>study the prework</li>
+		
+	</ul>
 
+
+
+
+<script>
+	$(document).ready(function(){
+
+
+	var a = $("#animate");
+	a.hide();
+	a.show("slow");
+	a.delay(5000);
+	a.hide("slow");
+
+})
+
+
+	$("#btn").on("click",function(){
+		var val = $("#myInput").val();
+		$("ul#myUL").append("<li>"+val+"</li>")
+	
+	
+		$('li').on('click', function() {
+         $(this).animate({
+             opacity: 0.0,
+             paddingLeft: '+=80'
+              }, 500, function() {
+              $(this).remove();
+                    });
+                });
+// 	function newTODO() {
+//   var li = document.createElement("li");
+//   var inputValue = document.getElementById("myInput").value;
+//   var t = document.createTextNode(inputValue);
+//   li.appendChild(t);
+//   if (inputValue === '') {
+//     alert("You must write something!");
+//   } else {
+//     document.getElementById("myUL").appendChild(li);
+//   }
+//   document.getElementById("myInput").value = "";
+
+//   var span = document.createElement("SPAN");
+//   var txt = document.createTextNode("\u00D7");
+//   span.className = "close";
+//   span.appendChild(txt);
+//   li.appendChild(span);
+
+//   for (i = 0; i < close.length; i++) {
+//     close[i].onclick = function() {
+//       var div = this.parentElement;
+//       div.style.display = "none";
+//     }
+//   }
+// }
+})
+
+</script>
 </body>
 </html>
